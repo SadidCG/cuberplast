@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 
 // Ruta para guardar usuario
-app.post('/guardar-usuario', guardarUsuario);
+app.post('http://localhost:3000/usuario', guardarUsuario);
 
 // Escucha en un puerto específico
 const port = process.env.PORT || 3000;

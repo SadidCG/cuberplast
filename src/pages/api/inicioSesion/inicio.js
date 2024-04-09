@@ -1,5 +1,5 @@
 // Importa la conexión a la base de datos
-import db from 'db/config.ts';
+import db from '/db/config.ts';
 
 // Función para autenticar un usuario
 async function autenticarUsuario(usuario, contraseña) {
