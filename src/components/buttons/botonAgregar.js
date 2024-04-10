@@ -15,13 +15,13 @@ document.getElementById("crear").addEventListener("click", function() {
 
     // Envía los datos al servidor utilizando AJAX
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "./db/guardarUsuario.js", true);
+    xhr.open("POST", "http://localhost:3000/usuario", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 // Maneja la respuesta del servidor si es necesario
-                console.log(this.status);
+                console.log(stringify);
             } else {
                 console.error('Hubo un problema con la solicitud.');
             }
