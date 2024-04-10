@@ -1,3 +1,8 @@
+
+
+
+import { db, usuario } from 'astro:db';
+
 document.getElementById("crear").addEventListener("click", function() {
     var name = document.getElementById("name").value;
     var lastname = document.getElementById("lastname").value;
@@ -13,19 +18,14 @@ document.getElementById("crear").addEventListener("click", function() {
         role: role
     };
 
-    // Envía los datos al servidor utilizando AJAX
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost:3000/usuario", true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                // Maneja la respuesta del servidor si es necesario
-                console.log(stringify);
-            } else {
-                console.error('Hubo un problema con la solicitud.');
-            }
-        }
-    };
-    xhr.send(JSON.stringify(datos));
+    // Insertar datos en la colección de usuarios usando AstroDB
+    usuario.insert(datos)
+        .then(() => {
+            console.log('Usuario creado exitosamente');
+        })
+        .catch(err => {
+            console.error('Hubo un problema al crear el usuario:', err);
+        });
+   
 });
+
